@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "djangofactory"
+version = "0.1.0"
+description = ""
+authors = ["user"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2.2"
+djangorestframework = "^3.14.0"
+psycopg2 = "^2.9.6"
+django-environ = "^0.10.0"
+pandas = "^2.0.2"
+numpy = "^1.25.0"
+
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.4.0"
+isort = "^5.12.0"
+black = "^23.3.0"
+flake8 = "^6.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
