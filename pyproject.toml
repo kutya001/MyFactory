@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "myfactory"
+version = "0.1.0"
+description = ""
+authors = ["kutya001 <111129686+kutya001@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+psycopg2 = "^2.9.5"
+django = "^4.1.7"
+environ = "^1.0"
+djangorestframework = "^3.14.0"
+django-environ = "^0.10.0"
+
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.1.1"
+isort = "^5.12.0"
+black = "^23.1.0"
+flake8 = "^6.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
