@@ -1,35 +1,64 @@
 from django.contrib import admin
 
-from .models.modelsINEM import (Counterparty, Individuals, Employes, Department, JobTitle)
-from .models.modelsOTHERS import (SpecialKeys, TypeSpecialKeys)
+from soksfactory.models.modelsINEM import (Counterparty, Individuals, Employes, Department, JobTitle)
+from soksfactory.models.modelsOTHERS import (SpecialKeys, TypeSpecialKeys)
 
-class CustomAdminSite(admin.AdminSite):
-    site_header = 'My Factory Admin'  # Заголовок административной панели
-    site_title = 'My Factory Admin'   # Заголовок во вкладке браузера
 
-custom_admin_site = CustomAdminSite(name='customadmin')
 
-custom_admin_site.register(TypeSpecialKeys, admin.ModelAdmin)
-custom_admin_site.register(SpecialKeys, admin.ModelAdmin)
+class TypeSpecialKeysAdmin(admin.ModelAdmin):
+    list_coletions = ['name_type_special_keys']
+    list_display = list_coletions
+    search_fields = list_coletions
+    list_filter = list_coletions
+    fields = list_coletions
+
+admin.site.register(TypeSpecialKeys, TypeSpecialKeysAdmin, group='Group 1')
+
+class SpecialKeysAdmin(admin.ModelAdmin):
+    list_coletions = ['type_special_keys_fk', 'name_special_keys']
+    list_display = list_coletions
+    search_fields = list_coletions
+    list_filter = list_coletions
+    fields = list_coletions
+
+admin.site.register(SpecialKeys, SpecialKeysAdmin, group='Group 1')
 
 
 class CounterpartyAdmin(admin.ModelAdmin):
-    
-    list_display = ['name_counterparty', 'inn_individuals', 'phone_number']
-    search_fields = ['name_counterparty', 'inn_individuals', 'phone_number']
-    list_filter = ['name_counterparty', 'inn_individuals', 'phone_number']
-    fields = ['name_counterparty', 'inn_individuals', 'phone_number']
+    list_coletions = ['name_counterparty', 'inn_individuals', 'phone_number']
+    list_display = list_coletions
+    search_fields = list_coletions
+    list_filter = list_coletions
+    fields = list_coletions
 
 admin.site.register(Counterparty, CounterpartyAdmin)
-admin.site.register(Employes)
-admin.site.register(Department)
+
+class EmployesAdmin(admin.ModelAdmin):
+    list_coletions = ['date_of_employment', 'individuals_fk', 'department_fk', 'job_title_fk', 'salary']
+    list_display = list_coletions
+    search_fields = list_coletions
+    list_filter = list_coletions
+    fields = list_coletions
+
+admin.site.register(Employes, EmployesAdmin)
+
+class DepartmentAdmin(admin.ModelAdmin):
+    
+    list_coletions = ['name_department']
+    list_display = list_coletions
+    search_fields = list_coletions
+    list_filter = list_coletions
+    fields = list_coletions
+
+admin.site.register(Department, DepartmentAdmin)
 
 class JobTitleAdmin(admin.ModelAdmin):
     
-    list_display = ['name_jobTitle']
-    search_fields = ['name_jobTitle']
-    list_filter = ['name_jobTitle']
-    fields = ['name_jobTitle']
+    list_coletions = ['name_jobTitle']
+    list_display = list_coletions
+    search_fields = list_coletions
+    list_filter = list_coletions
+    fields = list_coletions
 
 admin.site.register(JobTitle, JobTitleAdmin)
 
@@ -40,7 +69,7 @@ class IndividualsAdmin(admin.ModelAdmin):
     # Группируем поля
     fieldsets = (
         ('Информация о человеке', {
-            'fields': ('second_name_individuals', 'first_name_individuals', 'surname_individuals')
+            'fields': ('second_name_individuals', 'first_name_individuals', 'surname_individuals', 'full_name_individuals')
         }),
         ('Дополнительная информация', {
             'fields': ('gender', 'birthday', 'phone_number', 'biography')

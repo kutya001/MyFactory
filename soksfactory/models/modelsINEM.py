@@ -43,9 +43,9 @@ class Individuals(BaseModel):
     second_name_individuals = models.CharField(_("Фамилия:"), max_length=50)    
     first_name_individuals = models.CharField(_("Имя:"), max_length=50)  
     surname_individuals = models.CharField(_("Отчество:"), max_length=50)  
-    full_name_individuals = models.CharField(_("Полное имя:"), max_length=100, null=True)  
+    full_name_individuals = models.CharField(_("Полное имя:"), max_length=100, blank=True)  
     
-    inn_individuals = models.CharField(_("ИНН"), max_length=14, validators=[MinLengthValidator(14)])
+    inn_individuals = models.CharField(_("ИНН"), max_length=14, validators=[MinLengthValidator(14)], unique=True)
     phone_number = models.CharField(_("Номер телефона: "), max_length=50)
     biography = models.TextField(_("Биография: "), null=True, blank=True)
     
