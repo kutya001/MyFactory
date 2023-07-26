@@ -34,10 +34,7 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 # Application definition
 
 INSTALLED_APPS = [
-    # 'admin_tools',
-    # 'admin_tools.theming',
-    # 'admin_tools.menu',
-    # 'admin_tools.dashboard',
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,7 +45,8 @@ INSTALLED_APPS = [
     "rest_framework",
 
     # app
-    "soksfactory"
+    # "soksfactory"
+    'testapp'
 ]
 
 MIDDLEWARE = [
