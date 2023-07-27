@@ -138,6 +138,19 @@ files = [
 django = ">=2.2"
 
 [[package]]
+name = "django-modeladmin-reorder"
+version = "0.3.1"
+description = "Custom ordering for the apps and models in the admin app."
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-modeladmin-reorder-0.3.1.tar.gz", hash = "sha256:bf42d0dcd184b796b4d6d988c4b4cea7914adfc4430dd9978a8a0199051f189f"},
+]
+
+[package.dependencies]
+django = "*"
+
+[[package]]
 name = "djangorestframework"
 version = "3.14.0"
 description = "Web APIs for Django, made easy."
@@ -402,4 +415,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "b644d63e52ccc35f0286d1b3fc3c7308f22dd64beda35ac880ed2a40af0ee60c"
+content-hash = "e94e02412260b26b7bb3b6378d41a40674fd9151fd3aa9278d2ba75e2f35f25d"

@@ -34,6 +34,7 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 # Application definition
 
 INSTALLED_APPS = [
+    "admin_reorder",
     'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -45,11 +46,17 @@ INSTALLED_APPS = [
     "rest_framework",
 
     # app
-    # "soksfactory"
-    'testapp'
+    "soksfactory"
+    # 'testapp'
 ]
+# ГРУППИРОВКА МОДЛЕЙ В АДМИНКЕ
+from .admin_main_app_reorder import GROUPS_LIST
+
+ADMIN_REORDER = GROUPS_LIST
+
 
 MIDDLEWARE = [
+    'admin_reorder.middleware.ModelAdminReorder',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

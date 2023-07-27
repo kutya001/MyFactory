@@ -3,10 +3,7 @@ from django.contrib import admin
 
 from soksfactory.models.modelsINEM import (Counterparty, Individuals, Employes, Department, JobTitle)
 from soksfactory.models.modelsOTHERS import (SpecialKeys, TypeSpecialKeys)
-from django.apps import apps
 
-# Получаем все модели из текущего приложения
-app_models = apps.get_app_config('soksfactory').get_models()
 
 
 class TypeSpecialKeysAdmin(admin.ModelAdmin):
@@ -15,7 +12,6 @@ class TypeSpecialKeysAdmin(admin.ModelAdmin):
     search_fields = list_coletions
     list_filter = list_coletions
     fields = list_coletions
-    app_label='My App Group'
     
 
 admin.site.register(TypeSpecialKeys, TypeSpecialKeysAdmin)
@@ -26,7 +22,6 @@ class SpecialKeysAdmin(admin.ModelAdmin):
     search_fields = list_coletions
     list_filter = list_coletions
     fields = list_coletions
-    app_label='My App Group'
 
 admin.site.register(SpecialKeys, SpecialKeysAdmin)
 
