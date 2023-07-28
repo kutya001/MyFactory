@@ -47,7 +47,6 @@ INSTALLED_APPS = [
 
     # app
     "soksfactory"
-    # 'testapp'
 ]
 # ГРУППИРОВКА МОДЛЕЙ В АДМИНКЕ
 from .admin_main_app_reorder import GROUPS_LIST
