@@ -1,4 +1,4 @@
-from soksfactory.admin_app_reorder import CounterpartyGroup, PersonsGroup, SpecialKeysGroup
+from soksfactory.admin_app_reorder import CounterpartyGroup, PersonsGroup, SpecialKeysGroup, FefGroup
 
 def create_admin_reorder(*groups):
     ADMIN_REORDER = []
@@ -13,4 +13,4 @@ def create_admin_reorder(*groups):
     return tuple(ADMIN_REORDER)
 
 
-GROUPS_LIST = create_admin_reorder(CounterpartyGroup, PersonsGroup, SpecialKeysGroup)
+GROUPS_LIST = create_admin_reorder(CounterpartyGroup, PersonsGroup, SpecialKeysGroup, FefGroup)

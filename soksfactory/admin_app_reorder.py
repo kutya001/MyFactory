@@ -23,6 +23,6 @@ class PersonsGroup:
 class FefGroup:
     app_name = 'soksfactory'
     group_name = 'Справочники'
-    models_list = ['CategoryNomenclature', 'Nomenclature', 'CharacteristicDOC',
-                   'CharacteristicITEM', 'TypeNomenclature', 'PropertyChar',
+    models_list = ['CategoryNomenclature', 'TypeNomenclature', 'Nomenclature', 'CharacteristicDOC',
+                   'CharacteristicITEM',  'PropertyChar','Panton','Color',  
                    'ValueChar', 'SpecificationDOC', 'SpecificationITEM']

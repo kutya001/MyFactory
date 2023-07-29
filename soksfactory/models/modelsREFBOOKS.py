@@ -95,7 +95,7 @@ class CharacteristicITEM(BaseModel):
     class Meta:
         verbose_name = "Характеристика элемент"
         verbose_name_plural = "Характеристика элемент"
-        db_table = "socks_factory_" + "characteristic_DOC"
+        db_table = "socks_factory_" + "characteristic_ITEM"
     
     def __str__(self) -> str:
         return f"{self.text_name}"
@@ -137,8 +137,8 @@ class SpecificationDOC(BaseModel):
     special_key = models.ForeignKey(SpecialKeys, verbose_name=_("Ключ :"), on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name = "Значение"
-        verbose_name_plural = "Значение"
+        verbose_name = "Спецификация"
+        verbose_name_plural = "Спецификация"
         db_table = "socks_factory_" + "specificationDOC"
     
     def __str__(self) -> str:
@@ -165,9 +165,9 @@ class SpecificationITEM(BaseModel):
     unit = models.CharField(_(""), max_length=50)
 
     class Meta:
-        verbose_name = "Значение"
-        verbose_name_plural = "Значение"
-        db_table = "socks_factory_" + "specificationDOC"
+        verbose_name = "Спецификация элемент"
+        verbose_name_plural = "Спецификация элемент"
+        db_table = "socks_factory_" + "specificationITEM"
     
     def __str__(self) -> str:
         return f"{self.name_specification} / {self.special_key}"
