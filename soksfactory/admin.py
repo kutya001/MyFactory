@@ -32,7 +32,7 @@ class IndividualsAdmin(admin.ModelAdmin):
             'fields': ('second_name_individuals', 'first_name_individuals', 'surname_individuals')
         }),
         ('Дополнительная информация', {
-            'fields': ('gender', 'birthday', 'phone_number', 'biography')
+            'fields': ('gender', 'birthday', 'phone_number', 'biography')   
         }),
     )
 
