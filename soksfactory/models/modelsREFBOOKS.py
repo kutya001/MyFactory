@@ -126,7 +126,7 @@ class Color(BaseModel):
         db_table = "socks_factory_" + "color"
     
     def __str__(self) -> str:
-        return f"{self.color_name}"
+        return f"{self.pantone_fk}"
 
 
 from .modelsOTHERS import SpecialKeys
@@ -162,7 +162,7 @@ class SpecificationITEM(BaseModel):
     specificationDOC_fk = models.ForeignKey(SpecificationDOC, verbose_name=_("Документ :"), on_delete=models.CASCADE)
     material_fk = models.ForeignKey(Nomenclature, verbose_name=_("Материал :"), on_delete=models.CASCADE)
     value = models.DecimalField(_("Значение : "), max_digits=5, decimal_places=4)
-    unit = models.CharField(_(""), max_length=50)
+    unit = models.CharField(_("Единица измерения"), max_length=50)
 
     class Meta:
         verbose_name = "Спецификация элемент"
@@ -170,4 +170,4 @@ class SpecificationITEM(BaseModel):
         db_table = "socks_factory_" + "specificationITEM"
     
     def __str__(self) -> str:
-        return f"{self.name_specification} / {self.special_key}"
+        return f"{self.specificationDOC_fk}"
