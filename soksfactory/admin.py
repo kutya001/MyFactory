@@ -1,26 +1,31 @@
 from django.contrib import admin
 
-from .models.modelsINEM import (Counterparty, Individuals, Employes, Department, JobTitle)
+from soksfactory.models.modelsOTHERS import (SpecialKeys, TypeSpecialKeys)
+from soksfactory.models.modelsINEM import (Counterparty, Individuals, Employes, Department, JobTitle)
+from soksfactory.models.modelsREFBOOKS import (CategoryNomenclature, Nomenclature, CharacteristicDOC, 
+                                    CharacteristicITEM, TypeNomenclature, PropertyChar,
+                                    ValueChar, SpecificationDOC, SpecificationITEM, Color, Panton)
 
-class CounterpartyAdmin(admin.ModelAdmin):
-    
-    list_display = ['name_counterparty', 'inn_individuals', 'phone_number']
-    search_fields = ['name_counterparty', 'inn_individuals', 'phone_number']
-    list_filter = ['name_counterparty', 'inn_individuals', 'phone_number']
-    fields = ['name_counterparty', 'inn_individuals', 'phone_number']
 
+from soksfactory.adminclasses.adminOTHERS import TypeSpecialKeysAdmin, SpecialKeysAdmin
+from soksfactory.adminclasses.adminINEM import (CounterpartyAdmin, DepartmentAdmin, 
+                                                EmployesAdmin, IndividualsAdmin, 
+                                                JobTitleAdmin)
+from soksfactory.adminclasses.adminREFBOOKS import (CategoryNomenclatureAdmin, NomenclatureAdmin, CharacteristicDOCAdmin, 
+                                    CharacteristicITEMAdmin, TypeNomenclatureAdmin, PropertyCharAdmin,
+                                    ValueCharAdmin, SpecificationDOCAdmin, SpecificationITEMAdmin, ColorAdmin, PantonAdmin)
+
+
+#OTHERS
+admin.site.register(TypeSpecialKeys, TypeSpecialKeysAdmin)
+admin.site.register(SpecialKeys, SpecialKeysAdmin)
+
+#INEM
 admin.site.register(Counterparty, CounterpartyAdmin)
-admin.site.register(Employes)
-admin.site.register(Department)
-
-class JobTitleAdmin(admin.ModelAdmin):
-    
-    list_display = ['name_jobTitle']
-    search_fields = ['name_jobTitle']
-    list_filter = ['name_jobTitle']
-    fields = ['name_jobTitle']
-
+admin.site.register(Employes, EmployesAdmin)
+admin.site.register(Department, DepartmentAdmin)
 admin.site.register(JobTitle, JobTitleAdmin)
+<<<<<<< HEAD
 
 class IndividualsAdmin(admin.ModelAdmin):
     # Определите поля, которые будут отображаться в административной панели
@@ -46,7 +51,19 @@ class IndividualsAdmin(admin.ModelAdmin):
         obj.full_name_individuals = f"{obj.second_name_individuals} {obj.first_name_individuals} {obj.surname_individuals}"
         super().save_model(request, obj, form, change)
 
+=======
+>>>>>>> 4a98e34a9e8f4ae5630daf8ab5d7b06d914a07b5
 admin.site.register(Individuals, IndividualsAdmin)
 
-
-
+#INEM
+admin.site.register(Color, ColorAdmin)
+admin.site.register(Panton, PantonAdmin)
+admin.site.register(CategoryNomenclature, CategoryNomenclatureAdmin)
+admin.site.register(Nomenclature, NomenclatureAdmin)
+admin.site.register(CharacteristicDOC, CharacteristicDOCAdmin)
+admin.site.register(CharacteristicITEM, CharacteristicITEMAdmin)
+admin.site.register(TypeNomenclature, TypeNomenclatureAdmin)
+admin.site.register(PropertyChar, PropertyCharAdmin)
+admin.site.register(ValueChar, ValueCharAdmin)
+admin.site.register(SpecificationDOC, SpecificationDOCAdmin)
+admin.site.register(SpecificationITEM, SpecificationITEMAdmin)

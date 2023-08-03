@@ -1,4 +1,34 @@
-# from django.db import models
+from django.db import models
+from django.utils.translation import gettext_lazy as _
+from .modelsINEM import BaseModel
+
+class TypeSpecialKeys(BaseModel):
+
+    name_type_special_keys = models.CharField(_("Вид Ключа :"), max_length=50)    
+
+    class Meta:
+        verbose_name = "Вид Ключа"
+        verbose_name_plural = "Вид Ключа"
+        db_table = "socks_factory_" + "type_special_keys"
+    
+    def __str__(self) -> str:
+        return f"{self.name_type_special_keys}"
+    
+
+class SpecialKeys(BaseModel):
+
+    name_special_keys = models.CharField(_("Ключь :"), max_length=50)
+    type_special_keys_fk = models.ForeignKey(TypeSpecialKeys, verbose_name=_("Вид Ключа :"), on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = "Ключь"
+        verbose_name_plural = "Ключь"
+        db_table = "socks_factory_" + "special_keys"
+    
+    def __str__(self) -> str:
+        return f"{self.type_special_keys_fk} - {self.name_special_keys}"
+
+
 
 # Create your models here.
 

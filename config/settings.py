@@ -28,12 +28,14 @@ SECRET_KEY = env.str("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    "admin_reorder",
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,11 +44,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     "rest_framework",
+
     # app
     "soksfactory"
 ]
+# ГРУППИРОВКА МОДЛЕЙ В АДМИНКЕ
+from .admin_main_app_reorder import GROUPS_LIST
+
+ADMIN_REORDER = GROUPS_LIST
+
 
 MIDDLEWARE = [
+    'admin_reorder.middleware.ModelAdminReorder',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
