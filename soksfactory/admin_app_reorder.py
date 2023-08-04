@@ -4,7 +4,7 @@
 
 class CounterpartyGroup:
     app_name = 'soksfactory'
-    group_name = 'Counterparty'
+    group_name = 'Продажи и Клиенты'
     models_list = ['Counterparty']
 
 
@@ -16,7 +16,7 @@ class SpecialKeysGroup:
 
 class PersonsGroup:
     app_name = 'soksfactory'
-    group_name = 'Кадры'
+    group_name = 'Приказы и Кадры'
     models_list = ['Individuals', 'Employes', 'Department', 'JobTitle']
 
 

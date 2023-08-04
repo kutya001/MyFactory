@@ -21,10 +21,16 @@ class PantonAdmin(admin.ModelAdmin):
     search_fields = list_coletions
     list_filter = list_coletions
     fields = list_coletions
+    
+    class Media:
+        css = {
+            'all': ('css/assets_admin.css',)
+        }
+        js = ('js/assets_admin.js',)
 
 
 class CategoryNomenclatureAdmin(admin.ModelAdmin):
-    
+
     model = CategoryNomenclature
     list_coletions = ['name_category_nomenclature']
     list_display = list_coletions
@@ -34,7 +40,7 @@ class CategoryNomenclatureAdmin(admin.ModelAdmin):
 
 
 class NomenclatureAdmin(admin.ModelAdmin):
-    
+
     model = Nomenclature
     list_coletions = ['category_nomenclature_fk', 'type_nomenclature_fk', 'name_nomenclature']
     list_display = list_coletions
