@@ -4,6 +4,7 @@ from soksfactory.models.modelsREFBOOKS import (CategoryNomenclature, Nomenclatur
                                     CharacteristicITEM, TypeNomenclature, PropertyChar,
                                     ValueChar, SpecificationDOC, SpecificationITEM, Color, Panton)
 
+
 class PantonAdmin(admin.ModelAdmin):
     
     model = Panton
@@ -13,13 +14,6 @@ class PantonAdmin(admin.ModelAdmin):
     list_filter = list_coletions
     fields = list_coletions
     
-<<<<<<< HEAD
-    class Media:
-        css = {
-            'all': ('css/assets_admin.css',)
-        }
-        js = ('js/assets_admin.js',)
-=======
 
 class ColorAdmin(admin.ModelAdmin):
     
@@ -29,11 +23,11 @@ class ColorAdmin(admin.ModelAdmin):
     search_fields = list_coletions
     list_filter = list_coletions
     fields = list_coletions
->>>>>>> 925e27fc37a389c21a11fb301fc61f4e1f0b0bcd
 
 
 class CategoryNomenclatureAdmin(admin.ModelAdmin):
 
+    # form = CategoryNomenclatureForm
     model = CategoryNomenclature
     list_coletions = ['name_category_nomenclature']
     list_display = list_coletions
@@ -45,7 +39,7 @@ class CategoryNomenclatureAdmin(admin.ModelAdmin):
 class CharacteristicDOCTabAdmin(admin.TabularInline):
     
     model = CharacteristicDOC
-    list_coletions = ['nomenclature_fk', 'name_сharacteristic']
+    list_coletions = ['nomenclature_fk', 'characteristic_note', 'name_сharacteristic']
     list_display = list_coletions
     search_fields = list_coletions
     list_filter = list_coletions
@@ -76,7 +70,7 @@ class CharacteristicITEMAdmin(admin.TabularInline):
 class CharacteristicDOCAdmin(admin.ModelAdmin):
     
     model = CharacteristicDOC
-    list_coletions = ['nomenclature_fk', 'name_сharacteristic']
+    list_coletions = ['nomenclature_fk', 'characteristic_note', 'name_сharacteristic']
     list_display = list_coletions
     search_fields = list_coletions
     list_filter = list_coletions
@@ -93,6 +87,16 @@ class TypeNomenclatureAdmin(admin.ModelAdmin):
     fields = list_coletions
 
 
+class ValueCharAdmin(admin.TabularInline):
+    
+    model = ValueChar
+    list_coletions = ['value_char']
+    list_display = list_coletions
+    search_fields = list_coletions
+    list_filter = list_coletions
+    fields = list_coletions
+
+
 class PropertyCharAdmin(admin.ModelAdmin):
     
     model = PropertyChar
@@ -101,22 +105,14 @@ class PropertyCharAdmin(admin.ModelAdmin):
     search_fields = list_coletions
     list_filter = list_coletions
     fields = list_coletions
-
-
-class ValueCharAdmin(admin.ModelAdmin):
-    
-    model = ValueChar
-    list_coletions = ['property_char_fk', 'value_char']
-    list_display = list_coletions
-    search_fields = list_coletions
-    list_filter = list_coletions
-    fields = list_coletions
+    inlines = [ValueCharAdmin]
 
 
 class SpecificationITEMAdmin(admin.TabularInline):
     
     model = SpecificationITEM
-    list_coletions = ['material_fk', 'value', 'unit']
+    # form = SpecificationITEMForm
+    list_coletions = ['type_nomenclature_sp_fk', 'material_fk', 'value', 'unit']
     list_display = list_coletions
     search_fields = list_coletions
     list_filter = list_coletions

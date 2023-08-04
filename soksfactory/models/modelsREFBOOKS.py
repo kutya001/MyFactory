@@ -47,13 +47,18 @@ class Nomenclature(BaseModel):
 class CharacteristicDOC(BaseModel):
 
     nomenclature_fk = models.ForeignKey(Nomenclature, verbose_name=_("Номенклатура :"), on_delete=models.CASCADE)
-    name_сharacteristic = models.CharField(_("Характеристика : "), max_length=50)
+    characteristic_note = models.CharField(_("Примечание к характеристике"), max_length=50)
+    name_сharacteristic = models.CharField(_("Характеристика : "), max_length=100, unique=True, blank=True)
 
     class Meta:
         verbose_name = "Характеристика"
         verbose_name_plural = "Характеристика"
         db_table = "socks_factory_" + "characteristic_DOC"
     
+    def save(self, *args, **kwargs):
+        self.name_сharacteristic = f"{self.nomenclature_fk} / {self.characteristic_note}"
+        super().save(*args, **kwargs)
+
     def __str__(self) -> str:
         return f"{self.name_сharacteristic}"
 
@@ -87,10 +92,10 @@ class ValueChar(BaseModel):
 
 class CharacteristicITEM(BaseModel):
 
-    characteristic_doc_fk = models.ForeignKey(CharacteristicDOC, verbose_name=_("Номенклатура :"), on_delete=models.CASCADE)
+    characteristic_doc_fk = models.ForeignKey(CharacteristicDOC, verbose_name=_("Характеристика :"), on_delete=models.CASCADE)
     property_fk = models.ForeignKey(PropertyChar, verbose_name=_("Свойство :"), on_delete=models.CASCADE)
     value_fk = models.ForeignKey(ValueChar, verbose_name=_("Значение :"), on_delete=models.CASCADE)
-    text_name = models.CharField(_("Текст : "), max_length=50)
+    text_name = models.CharField(_("Текст : "), max_length=50, blank=True)
 
     class Meta:
         verbose_name = "Характеристика элемент"
@@ -137,8 +142,8 @@ class SpecificationDOC(BaseModel):
     special_key = models.ForeignKey(SpecialKeys, verbose_name=_("Ключ :"), on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name = "Спецификация"
-        verbose_name_plural = "Спецификация"
+        verbose_name = "Спецификация (Калькуляция)"
+        verbose_name_plural = "Спецификация (Калькуляция)"
         db_table = "socks_factory_" + "specificationDOC"
     
     def __str__(self) -> str:
@@ -160,6 +165,7 @@ class Unit(BaseModel):
 class SpecificationITEM(BaseModel):
 
     specificationDOC_fk = models.ForeignKey(SpecificationDOC, verbose_name=_("Документ :"), on_delete=models.CASCADE)
+    type_nomenclature_sp_fk = models.ForeignKey(TypeNomenclature, verbose_name=_("Вид номенклатуры:"), on_delete=models.CASCADE)
     material_fk = models.ForeignKey(Nomenclature, verbose_name=_("Материал :"), on_delete=models.CASCADE)
     value = models.DecimalField(_("Значение : "), max_digits=5, decimal_places=4)
     unit = models.CharField(_("Единица измерения"), max_length=50)

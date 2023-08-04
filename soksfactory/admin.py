@@ -17,7 +17,7 @@ from soksfactory.adminclasses.adminREFBOOKS import (CategoryNomenclatureAdmin, N
 
 
 #OTHERS
-admin.site.register(TypeSpecialKeys, TypeSpecialKeysAdmin)
+# admin.site.register(TypeSpecialKeys, TypeSpecialKeysAdmin)
 admin.site.register(SpecialKeys, SpecialKeysAdmin)
 
 #INEM
@@ -37,6 +37,6 @@ admin.site.register(CharacteristicDOC, CharacteristicDOCAdmin)
 # admin.site.register(CharacteristicITEM, CharacteristicITEMAdmin)
 admin.site.register(TypeNomenclature, TypeNomenclatureAdmin)
 admin.site.register(PropertyChar, PropertyCharAdmin)
-admin.site.register(ValueChar, ValueCharAdmin)
+# admin.site.register(ValueChar, ValueCharAdmin)
 admin.site.register(SpecificationDOC, SpecificationDOCAdmin)
 # admin.site.register(SpecificationITEM, SpecificationITEMAdmin)
